@@ -5,5 +5,5 @@ class Sizes {
 
   Sizes._();
 
-  static double pagePadding = 12.h;
+  static double pagePadding = 16;
 }

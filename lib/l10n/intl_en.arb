@@ -1,1 +1,7 @@
-{}
+{
+  "appbar_title": "Add players",
+  "add": "Add",
+  "remove": "Remove",
+  "cont": "Continue"
+
+}
