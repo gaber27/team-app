@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 import 'package:team/constant/colors.dart';
 import 'package:team/controller/app/cubit.dart';
 import 'package:team/view/pages/splash.dart';
-import 'controller/auth/cubit.dart';
+import 'controller/user/cubit.dart';
 import 'network/dio.dart';
 
 void main() async{
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => AppCubit()),
-        BlocProvider(create: (context) => AuthCubit())
+        BlocProvider(create: (context) => UserCubit()..getUsers())
       ],
 
       // Here i used Sized package for responsive

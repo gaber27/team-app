@@ -59,32 +59,32 @@ class Users {
     required this.crypto,
   });
   late final int id;
-  late final String firstName;
-  late final String lastName;
-  late final String maidenName;
+  late final dynamic firstName;
+  late final dynamic lastName;
+  late final dynamic maidenName;
   late final int age;
-  late final String gender;
-  late final String email;
-  late final String phone;
-  late final String username;
-  late final String password;
-  late final String birthDate;
-  late final String image;
-  late final String bloodGroup;
+  late final dynamic gender;
+  late final dynamic email;
+  late final dynamic phone;
+  late final dynamic username;
+  late final dynamic password;
+  late final dynamic birthDate;
+  late final dynamic image;
+  late final dynamic bloodGroup;
   late final int height;
-  late final double? weight;
-  late final String eyeColor;
+  late final dynamic weight;
+  late final dynamic eyeColor;
   late final Hair hair;
-  late final String domain;
-  late final String ip;
+  late final dynamic domain;
+  late final dynamic ip;
   late final Address address;
-  late final String macAddress;
-  late final String university;
+  late final dynamic macAddress;
+  late final dynamic university;
   late final Bank bank;
   late final Company company;
-  late final String ein;
-  late final String ssn;
-  late final String userAgent;
+  late final dynamic ein;
+  late final dynamic ssn;
+  late final dynamic userAgent;
   late final Crypto crypto;
 
   Users.fromJson(Map<String, dynamic> json){
@@ -157,8 +157,8 @@ class Hair {
     required this.color,
     required this.type,
   });
-  late final String color;
-  late final String type;
+  late final dynamic color;
+  late final dynamic type;
 
   Hair.fromJson(Map<String, dynamic> json){
     color = json['color'];
@@ -181,11 +181,11 @@ class Address {
     required this.postalCode,
     required this.state,
   });
-  late final String address;
-  late final String city;
+  late final dynamic address;
+  late final dynamic city;
   late final Coordinates coordinates;
-  late final String postalCode;
-  late final String state;
+  late final dynamic postalCode;
+  late final dynamic state;
 
   Address.fromJson(Map<String, dynamic> json){
     address = json['address'];
@@ -235,11 +235,11 @@ class Bank {
     required this.currency,
     required this.iban,
   });
-  late final String cardExpire;
-  late final String cardNumber;
-  late final String cardType;
-  late final String currency;
-  late final String iban;
+  late final dynamic cardExpire;
+  late final dynamic cardNumber;
+  late final dynamic cardType;
+  late final dynamic currency;
+  late final dynamic iban;
 
   Bank.fromJson(Map<String, dynamic> json){
     cardExpire = json['cardExpire'];
@@ -268,9 +268,9 @@ class Company {
     required this.title,
   });
   late final Address address;
-  late final String department;
-  late final String name;
-  late final String title;
+  late final dynamic department;
+  late final dynamic name;
+  late final dynamic title;
 
   Company.fromJson(Map<String, dynamic> json){
     address = Address.fromJson(json['address']);
@@ -295,9 +295,9 @@ class Crypto {
     required this.wallet,
     required this.network,
   });
-  late final String coin;
-  late final String wallet;
-  late final String network;
+  late final dynamic coin;
+  late final dynamic wallet;
+  late final dynamic network;
 
   Crypto.fromJson(Map<String, dynamic> json){
     coin = json['coin'];
