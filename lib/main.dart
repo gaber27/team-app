@@ -1,11 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sizer/sizer.dart';
 import 'package:team/constant/colors.dart';
 import 'package:team/controller/app/cubit.dart';
 import 'package:team/view/pages/splash.dart';
 import 'controller/user/cubit.dart';
+import 'generated/l10n.dart';
 import 'network/dio.dart';
 
 void main() async{
@@ -29,7 +31,15 @@ class MyApp extends StatelessWidget {
       // Here i used Sized package for responsive
       child: Sizer(
         builder: (context, orientation, deviceType) => MaterialApp(
-          title: 'Players',
+          locale: const Locale('en'),
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            title: 'Players',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor:mainColor),
             useMaterial3: true,
