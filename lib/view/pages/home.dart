@@ -12,6 +12,7 @@ import 'package:team/controller/user/cubit.dart';
 import 'package:team/controller/user/states.dart';
 import 'package:team/view/components/selected_player.dart';
 import 'package:team/view/components/shimmer_item.dart';
+import 'package:team/view/components/text_button.dart';
 import 'package:team/view/components/user_item.dart';
 import '../../generated/l10n.dart';
 
@@ -141,6 +142,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            bottomNavigationBar: textBtn(text: S.of(context).cont)
+            
           )),
     );
   }

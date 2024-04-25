@@ -6,5 +6,5 @@ class Sizes {
   Sizes._();
 
   static double pagePadding = 16;
-  static double largePadding = 40;
+  static double btnPadding = 8;
 }
