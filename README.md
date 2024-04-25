@@ -4,7 +4,14 @@ A new Flutter project.
 
 ## Getting Started
 ![Alt text](assets/images/splash.jpg "Splash")
-![Alt text](assets/images/loading.jpg "Splash")
+
+![Alt text](assets/images/loading.jpg "Loading")
+
+![Alt text](assets/images/home.jpg "Home")
+
+![Alt text](assets/images/addUser.jpg "Add Player")
+
+![Alt text](assets/images/search.jpg "Search")
 
 This project is a starting point for a Flutter application.
 
