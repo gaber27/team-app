@@ -15,6 +15,7 @@ class UserCubit extends Cubit<UserStates> {
   // This variable for pagination
   int limit = 10;
   Map<int, List<String>> userMap = {};
+  List searchUser = [];
   final scrollController = ScrollController();
   bool loading = false ;
 
@@ -76,6 +77,18 @@ class UserCubit extends Cubit<UserStates> {
   // function to check if user is selected ot not
   bool isUserInMap(int userId) {
     return userMap.containsKey(userId-1);
+  }
+
+  void filterUsers(String searchQuery) {
+    // Convert the list of users to a new list filtered by the search query
+
+    searchUser = usersModel!.users.where((user) =>
+    user.firstName.toLowerCase().contains(searchQuery.toLowerCase()) ||
+        user.lastName.toLowerCase().contains(searchQuery.toLowerCase())
+    ).toList();
+    print(searchUser.length);
+    emit(UserSearchState());
+
   }
 
 }

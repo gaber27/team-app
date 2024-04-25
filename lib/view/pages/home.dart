@@ -10,6 +10,7 @@ import 'package:team/controller/app/cubit.dart';
 import 'package:team/controller/app/states.dart';
 import 'package:team/controller/user/cubit.dart';
 import 'package:team/controller/user/states.dart';
+import 'package:team/view/components/search.dart';
 import 'package:team/view/components/selected_player.dart';
 import 'package:team/view/components/shimmer_item.dart';
 import 'package:team/view/components/text_button.dart';
@@ -24,6 +25,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var controller = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -43,7 +46,6 @@ class _HomePageState extends State<HomePage> {
                 color: headingColor,
                 fontWeight: FontWeight.w600,
                 fontSize: 14.sp
-
               ),),
             ),
             body: Column(
@@ -111,6 +113,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+                searchBar(context: context, function: ()=>UserCubit.get(context).filterUsers(controller.text),controller: controller),
                 ConditionalBuilder(
                   condition: state is !UserLoadGetUsersState,
                   fallback: (context) =>
@@ -125,19 +128,33 @@ class _HomePageState extends State<HomePage> {
                       ),
                   ),
                   builder: (context) => Expanded(
-                    child: ListView.builder(
+                    child:
+                    state is UserSearchState && UserCubit.get(context).searchUser.isNotEmpty?
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: UserCubit.get(context).searchUser.length,
+                        itemBuilder: (context, index) =>
+                            userItem(
+                                function:()=>
+                                UserCubit.get(context).isUserInMap(UserCubit.get(context).searchUser[index].id)?
+                                UserCubit.get(context).removeUserFromMap(UserCubit.get(context).searchUser[index].id):
+                                UserCubit.get(context).selectNewUser(id: UserCubit.get(context).searchUser[index].id, firstName: UserCubit.get(context).searchUser[index].firstName, lastName: UserCubit.get(context).searchUser[index].lastName, image: UserCubit.get(context).searchUser[index].image, context: context),
+                                id: UserCubit.get(context).searchUser[index].id,firstName: UserCubit.get(context).searchUser[index].firstName, lastName: UserCubit.get(context).searchUser[index].lastName, image: UserCubit.get(context).searchUser[index].image, context: context)
+                    ):
+                    ListView.builder(
                         controller: UserCubit.get(context).scrollController,
                         shrinkWrap: true,
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      itemCount: UserCubit.get(context).usersModel!.users.length,
-                      itemBuilder: (context, index) =>
-                      userItem(
-                          function:()=>
-                          UserCubit.get(context).isUserInMap(UserCubit.get(context).usersModel!.users[index].id)?
-                              UserCubit.get(context).removeUserFromMap(UserCubit.get(context).usersModel!.users[index].id):
-                              UserCubit.get(context).selectNewUser(id: UserCubit.get(context).usersModel!.users[index].id, firstName: UserCubit.get(context).usersModel!.users[index].firstName, lastName: UserCubit.get(context).usersModel!.users[index].lastName, image: UserCubit.get(context).usersModel!.users[index].image, context: context),
-                          id: UserCubit.get(context).usersModel!.users[index].id,firstName: UserCubit.get(context).usersModel!.users[index].firstName, lastName: UserCubit.get(context).usersModel!.users[index].lastName, image: UserCubit.get(context).usersModel!.users[index].image, context: context)
-                    ),
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: UserCubit.get(context).usersModel!.users.length,
+                        itemBuilder: (context, index) =>
+                            userItem(
+                                function:()=>
+                                UserCubit.get(context).isUserInMap(UserCubit.get(context).usersModel!.users[index].id)?
+                                UserCubit.get(context).removeUserFromMap(UserCubit.get(context).usersModel!.users[index].id):
+                                UserCubit.get(context).selectNewUser(id: UserCubit.get(context).usersModel!.users[index].id, firstName: UserCubit.get(context).usersModel!.users[index].firstName, lastName: UserCubit.get(context).usersModel!.users[index].lastName, image: UserCubit.get(context).usersModel!.users[index].image, context: context),
+                                id: UserCubit.get(context).usersModel!.users[index].id,firstName: UserCubit.get(context).usersModel!.users[index].firstName, lastName: UserCubit.get(context).usersModel!.users[index].lastName, image: UserCubit.get(context).usersModel!.users[index].image, context: context)
+                    )
                   ),
                 ),
               ],

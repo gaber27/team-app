@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Team is complete.remove one player."),
         "cont": MessageLookupByLibrary.simpleMessage("Continue"),
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
+        "search_hint":
+            MessageLookupByLibrary.simpleMessage("Search by player name"),
         "test": MessageLookupByLibrary.simpleMessage("Test")
       };
 }

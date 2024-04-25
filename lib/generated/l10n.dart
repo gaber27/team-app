@@ -119,6 +119,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Search by player name`
+  String get search_hint {
+    return Intl.message(
+      'Search by player name',
+      name: 'search_hint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

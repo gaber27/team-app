@@ -5,6 +5,7 @@
   "cont": "Continue",
   "test":"Test",
   "account":"Account",
-  "complete_team_msg": "Team is complete.remove one player."
+  "complete_team_msg": "Team is complete.remove one player.",
+  "search_hint": "Search by player name"
 
 }
