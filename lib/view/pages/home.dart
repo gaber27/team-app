@@ -14,15 +14,26 @@ import 'package:team/view/components/user_item.dart';
 
 import '../../generated/l10n.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    UserCubit.get(context).scrollController.addListener(UserCubit.get(context).scrollListener);
+    UserCubit.get(context).getUsers();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit,AppStates>(
       listener: (context, state) {},
       builder: (context, state) => BlocConsumer<UserCubit,UserStates>(
-          listener: (context, state) {} ,
+          listener: (context, state){},
           builder: (context, state) => Scaffold(
             appBar: AppBar(
               centerTitle: true,
@@ -33,35 +44,36 @@ class HomePage extends StatelessWidget {
 
               ),),
             ),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  ConditionalBuilder(
-                    condition: state is !UserLoadGetUsersState,
-                    fallback: (context) =>
-                    ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 10,
-                        itemBuilder: (context, index) =>  Shimmer.fromColors(
-                            baseColor: greyColor,
-                            highlightColor: greyColor,
-                            child:shimmerItem()
-                        ),
-                    ),
-                    builder: (context) =>  ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
+            body: Column(
+              children: [
+                ConditionalBuilder(
+                  condition: state is !UserLoadGetUsersState,
+                  fallback: (context) =>
+                  ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 3,
+                      itemBuilder: (context, index) =>  Shimmer.fromColors(
+                          baseColor: greyColor,
+                          highlightColor: greyColor,
+                          child:shimmerItem()
+                      ),
+                  ),
+                  builder: (context) => Expanded(
+                    child: ListView.builder(
+                        controller: UserCubit.get(context).scrollController,
+                        shrinkWrap: true,
+                      physics: const AlwaysScrollableScrollPhysics(),
                       itemCount: UserCubit.get(context).usersModel!.users.length,
                       itemBuilder: (context, index) =>
                       userItem(firstName: UserCubit.get(context).usersModel!.users[index].firstName, lastName: UserCubit.get(context).usersModel!.users[index].lastName, image: UserCubit.get(context).usersModel!.users[index].image, context: context)
-
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           )),
     );
   }
+
 }
