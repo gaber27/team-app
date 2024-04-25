@@ -4,4 +4,5 @@ class Images {
   Images._();
 
   static const String splashAnimation = 'assets/animation/splashAnimated.json';
+  static const String userImage = 'assets/images/me.png';
 }

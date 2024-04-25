@@ -22,9 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "account": MessageLookupByLibrary.simpleMessage("Account"),
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "appbar_title": MessageLookupByLibrary.simpleMessage("Add players"),
+        "complete_team_msg": MessageLookupByLibrary.simpleMessage(
+            "Team is complete.remove one player."),
         "cont": MessageLookupByLibrary.simpleMessage("Continue"),
-        "remove": MessageLookupByLibrary.simpleMessage("Remove")
+        "remove": MessageLookupByLibrary.simpleMessage("Remove"),
+        "test": MessageLookupByLibrary.simpleMessage("Test")
       };
 }

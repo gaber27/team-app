@@ -8,3 +8,5 @@ class UserErrorGetUsersState extends UserStates{}
 // pagination
 class UserSuccessIncreaseState extends UserStates{}
 class UserChangeLoadingState extends UserStates{}
+class UserAddedToNewListState extends UserStates{}
+class UserRemovedFromNewListState extends UserStates{}

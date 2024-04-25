@@ -2,6 +2,9 @@
   "appbar_title": "Add players",
   "add": "Add",
   "remove": "Remove",
-  "cont": "Continue"
+  "cont": "Continue",
+  "test":"Test",
+  "account":"Account",
+  "complete_team_msg": "Team is complete.remove one player."
 
 }

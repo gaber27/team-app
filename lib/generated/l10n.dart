@@ -89,6 +89,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Test`
+  String get test {
+    return Intl.message(
+      'Test',
+      name: 'test',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message(
+      'Account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Team is complete.remove one player.`
+  String get complete_team_msg {
+    return Intl.message(
+      'Team is complete.remove one player.',
+      name: 'complete_team_msg',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
